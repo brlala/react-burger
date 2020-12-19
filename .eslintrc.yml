@@ -36,9 +36,11 @@ rules:
   jsx-a11y/click-events-have-key-events: off
   jsx-a11y/no-noninteractive-element-interactions: # optionally should be removed, click events should be obvious
     - off
-  react/state-in-constructor: # optionally should be removed, click events should be obvious
+  react/state-in-constructor: # optionally should be removed, migrate to functional components
     - off
-  react/destructuring-assignment: # optionally should be removed, click events should be obvious
+  react/no-access-state-in-setstate: # optionally should be removed, move to functional components, setstate is async
+    - off
+  react/destructuring-assignment: # optionally should be removed, make code cleaner and more readable
     - off
   no-unused-vars: # optionally should be removed, to enforce clean code
     - warn
