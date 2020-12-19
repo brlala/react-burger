@@ -1,1 +1,1 @@
-1. Setting up ESlint and prettier
+1. Setting up ESlint, prettier, gitignore
