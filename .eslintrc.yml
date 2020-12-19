@@ -1,0 +1,51 @@
+env:
+  browser: true
+  es2021: true
+extends:
+  - airbnb
+  - plugin:prettier/recommended
+  - prettier/react
+parserOptions:
+  ecmaFeatures:
+    jsx: true
+  ecmaVersion: 12
+  sourceType: module
+plugins:
+  - react
+rules:
+  react/jsx-uses-react: off
+  react/react-in-jsx-scope: off
+  react/jsx-filename-extension:
+    - 1
+    - extensions:
+        - .js
+        - .jsx
+  react/no-unescaped-entities:
+    - error
+    - forbid:
+        - ">"
+        - "}"
+  no-console: off
+  no-restricted-syntax:
+    - error
+    - selector: CallExpression[callee.object.name='console'][callee.property.name!=/^(log|warn|error|info|trace)$/]
+      message: Unexpected property on console object was called
+  max-len:
+    - warn
+    - code: 120
+  jsx-a11y/click-events-have-key-events: off
+  jsx-a11y/no-noninteractive-element-interactions: # optionally should be removed, click events should be obvious
+    - off
+  no-unused-vars: # optionally should be removed, to enforce clean code
+    - warn
+  react/jsx-one-expression-per-line: off # optionally should be removed, could mess with text display
+  quotes:
+    - warn
+    - single
+    - avoidEscape: true
+      allowTemplateLiterals: false
+  prettier/prettier:
+    - error
+    - singleQuote: true
+    - fileInfoOptions:
+        withNodeModules: true
