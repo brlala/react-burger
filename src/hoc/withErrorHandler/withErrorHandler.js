@@ -8,17 +8,24 @@ const withErrorHandler = (WrappedComponent, axios) => {
     };
 
     // global error handlers
-    componentDidMount() {
-      axios.interceptors.request.use((req) => {
+    // eslint-disable-next-line camelcase
+    UNSAFE_componentWillMount() {
+      this.reqInterceptor = axios.interceptors.request.use((req) => {
         this.setState({ error: null });
         return req;
       });
-      axios.interceptors.response.use(
+      this.resInterceptor = axios.interceptors.response.use(
         (res) => res,
         (error) => {
           this.setState({ error });
         }
       );
+    }
+
+    componentWillUnmount() {
+      // prevent memory leak when lots of instance is created
+      axios.interceptors.request.eject(this.reqInterceptor);
+      axios.interceptors.request.eject(this.resInterceptor);
     }
 
     errorConfirmedHandler = () => {
