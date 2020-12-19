@@ -34,23 +34,17 @@ rules:
     - warn
     - code: 120
   jsx-a11y/click-events-have-key-events: off
-  jsx-a11y/no-noninteractive-element-interactions: # optionally should be removed, click events should be obvious
-    - off
-  react/state-in-constructor: # optionally should be removed, migrate to functional components
-    - off
-  react/no-access-state-in-setstate: # optionally should be removed, move to functional components, setstate is async
-    - off
-  react/destructuring-assignment: # optionally should be removed, make code cleaner and more readable
-    - off
-  no-unused-vars: # optionally should be removed, to enforce clean code
-    - warn
-  react/prefer-stateless-function: # optionally should be removed, to enforce clean code
-    - warn
-  react/no-array-index-key: # optionally should be removed, to enforce clean code
-    - warn
+  jsx-a11y/no-noninteractive-element-interactions: off # optionally should be removed, click events should be obvious
+  jsx-a11y/no-static-element-interactions: off # optionally should be removed, click events should be obvious
+  react/state-in-constructor: off # optionally should be removed, migrate to functional components
+  react/no-access-state-in-setstate: off # optionally should be removed, move to functional components, setstate is async
+  react/destructuring-assignment: off # optionally should be removed, make code cleaner and more readable
+  no-unused-vars: warn # optionally should be removed, to enforce clean code
+  react/prefer-stateless-function: warn # optionally should be removed, to enforce clean code
+  react/no-array-index-key: warn # optionally should be removed, to enforce clean code
   react/jsx-one-expression-per-line: off # optionally should be removed, could mess with text display
-  no-shadow: # optionally should be removed, to enforce clean code
-    - warn
+  react/prop-types: off # optionally should be removed, could mess with text display
+  no-shadow: warn # optionally should be removed, to enforce clean code
   guard-for-in: off # depends on use case
   quotes:
     - warn
