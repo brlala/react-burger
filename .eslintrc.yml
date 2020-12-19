@@ -49,6 +49,9 @@ rules:
   react/no-array-index-key: # optionally should be removed, to enforce clean code
     - warn
   react/jsx-one-expression-per-line: off # optionally should be removed, could mess with text display
+  no-shadow: # optionally should be removed, to enforce clean code
+    - warn
+  guard-for-in: off # depends on use case
   quotes:
     - warn
     - single
