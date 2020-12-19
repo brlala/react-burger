@@ -38,6 +38,8 @@ rules:
     - off
   no-unused-vars: # optionally should be removed, to enforce clean code
     - warn
+  react/prefer-stateless-function: # optionally should be removed, to enforce clean code
+    - warn
   react/jsx-one-expression-per-line: off # optionally should be removed, could mess with text display
   quotes:
     - warn
