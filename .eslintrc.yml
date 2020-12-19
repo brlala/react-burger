@@ -36,9 +36,15 @@ rules:
   jsx-a11y/click-events-have-key-events: off
   jsx-a11y/no-noninteractive-element-interactions: # optionally should be removed, click events should be obvious
     - off
+  react/state-in-constructor: # optionally should be removed, click events should be obvious
+    - off
+  react/destructuring-assignment: # optionally should be removed, click events should be obvious
+    - off
   no-unused-vars: # optionally should be removed, to enforce clean code
     - warn
   react/prefer-stateless-function: # optionally should be removed, to enforce clean code
+    - warn
+  react/no-array-index-key: # optionally should be removed, to enforce clean code
     - warn
   react/jsx-one-expression-per-line: off # optionally should be removed, could mess with text display
   quotes:
