@@ -46,6 +46,7 @@ rules:
   react/prop-types: off # optionally should be removed, could mess with text display
   no-shadow: warn # optionally should be removed, to enforce clean code
   guard-for-in: off # depends on use case
+  spaced-comment: off # depends on use case
   quotes:
     - warn
     - single
