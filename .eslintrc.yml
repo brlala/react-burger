@@ -49,6 +49,7 @@ rules:
   guard-for-in: off # depends on use case
   spaced-comment: off # depends on use case
   jsx-a11y/label-has-associated-control: off # depends on use case
+  class-methods-use-this: off
   quotes:
     - warn
     - single

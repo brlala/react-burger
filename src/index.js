@@ -9,6 +9,7 @@ import reportWebVitals from './reportWebVitals';
 import reducer from './store/reducer';
 
 const store = createStore(reducer);
+console.log(store.getState());
 const app = (
   <React.StrictMode>
     <Provider store={store}>

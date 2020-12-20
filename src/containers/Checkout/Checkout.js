@@ -1,31 +1,10 @@
 import { Component } from 'react';
 import { Route } from 'react-router-dom';
-import CheckoutSummary from '../../components/Order/CheckoutSummary/CheckoutSummary';
+import { connect } from 'react-redux';
 import ContactData from './ContactData/ContactData';
+import CheckoutSummary from '../../components/Order/CheckoutSummary/CheckoutSummary';
 
 class Checkout extends Component {
-  state = {
-    ingredients: null,
-    price: 0,
-  };
-
-  // eslint-disable-next-line camelcase
-  UNSAFE_componentWillMount() {
-    const query = new URLSearchParams(this.props.location.search);
-    const ingredients = {};
-    let price = 0;
-    for (const param of query.entries()) {
-      // ['salad', '1']
-      if (param[0] === 'price') {
-        // eslint-disable-next-line prefer-destructuring
-        price = param[1];
-      } else {
-        ingredients[param[0]] = +param[1];
-      }
-    }
-    this.setState({ ingredients, price });
-  }
-
   checkoutCancelledHandler = () => {
     this.props.history.goBack();
   };
@@ -38,25 +17,23 @@ class Checkout extends Component {
     return (
       <div>
         <CheckoutSummary
-          ingredients={this.state.ingredients}
+          ingredients={this.props.ings}
           checkoutCancelled={this.checkoutCancelledHandler}
           checkoutContinued={this.checkoutContinuedHandler}
         />
         <Route
           path={`${this.props.match.path}/contact-data`}
-          // component={ContactData}
-          render={(props) => (
-            <ContactData
-              ingredients={this.state.ingredients}
-              price={this.state.price}
-              // eslint-disable-next-line react/jsx-props-no-spreading
-              {...props}
-            />
-          )}
+          component={ContactData}
         />
       </div>
     );
   }
 }
 
-export default Checkout;
+const mapStateToProps = (state) => {
+  return {
+    ings: state.ingredients,
+  };
+};
+
+export default connect(mapStateToProps)(Checkout);
