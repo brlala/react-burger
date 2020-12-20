@@ -16,14 +16,14 @@ class Checkout extends Component {
     let price = 0;
     for (const param of query.entries()) {
       // ['salad', '1']
-      // eslint-disable-next-line prefer-destructuring
       if (param[0] === 'price') {
+        // eslint-disable-next-line prefer-destructuring
         price = param[1];
       } else {
         ingredients[param[0]] = +param[1];
       }
     }
-    this.setState({ ingredients, totalPrice: price });
+    this.setState({ ingredients, price });
   }
 
   checkoutCancelledHandler = () => {
@@ -49,6 +49,7 @@ class Checkout extends Component {
             <ContactData
               ingredients={this.state.ingredients}
               price={this.state.price}
+              // eslint-disable-next-line react/jsx-props-no-spreading
               {...props}
             />
           )}

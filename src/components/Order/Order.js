@@ -1,16 +1,16 @@
 import classes from './Order.module.css';
 
-const order = (props) => {
-  const ingredients = [];
+const order = ({ ingredients, price }) => {
+  const ingredientsList = [];
 
-  for (const ingredientName in props.ingredients) {
-    ingredients.push({
+  for (const ingredientName in ingredients) {
+    ingredientsList.push({
       name: ingredientName,
-      amount: props.ingredients[ingredientName],
+      amount: ingredients[ingredientName],
     });
   }
 
-  const ingredientOutput = ingredients.map((ig) => {
+  const ingredientOutput = ingredientsList.map((ig) => {
     return (
       <span
         style={{
@@ -29,9 +29,9 @@ const order = (props) => {
 
   return (
     <div className={classes.Order}>
-      <p>Ingredients: Salad</p>
+      <p>Ingredients: {ingredientOutput}</p>
       <p>
-        Price: <strong>USD {Number.parseFloat('321.22').toFixed(2)}</strong>
+        Price: <strong>USD {Number.parseFloat(price).toFixed(2)}</strong>
       </p>
     </div>
   );
