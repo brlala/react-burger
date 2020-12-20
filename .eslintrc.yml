@@ -42,6 +42,7 @@ rules:
   no-unused-vars: warn # optionally should be removed, to enforce clean code
   react/prefer-stateless-function: warn # optionally should be removed, to enforce clean code
   react/no-array-index-key: warn # optionally should be removed, to enforce clean code
+  react/no-unused-state: warn # optionally should be removed, to enforce clean code
   react/jsx-one-expression-per-line: off # optionally should be removed, could mess with text display
   react/prop-types: off # optionally should be removed, could mess with text display
   no-shadow: warn # optionally should be removed, to enforce clean code
