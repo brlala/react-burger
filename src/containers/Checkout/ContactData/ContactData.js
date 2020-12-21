@@ -98,9 +98,7 @@ class ContactData extends Component {
     event.preventDefault();
     const formData = {};
     for (const formElementIdentifier in this.state.orderForm) {
-      formData[formElementIdentifier] = this.state.orderForm[
-        formElementIdentifier
-      ].value;
+      formData[formElementIdentifier] = this.state.orderForm[formElementIdentifier].value;
     }
     const order = {
       ingredients: this.props.ings,
@@ -117,10 +115,7 @@ class ContactData extends Component {
     const updatedFormElement = { ...updatedOrderForm[inputIdentifier] };
     updatedFormElement.value = event.target.value;
     updatedFormElement.touched = true;
-    updatedFormElement.valid = this.checkValidity(
-      updatedFormElement.value,
-      updatedFormElement.validation
-    );
+    updatedFormElement.valid = this.checkValidity(updatedFormElement.value, updatedFormElement.validation);
     updatedOrderForm[inputIdentifier] = updatedFormElement;
     let formIsValid = true;
     for (const inputIdentifier in updatedOrderForm) {
@@ -166,11 +161,7 @@ class ContactData extends Component {
             touched={formElement.config.touched}
           />
         ))}
-        <Button
-          btnType="Success"
-          clicked={this.orderHandler}
-          disabled={!this.state.formIsValid}
-        >
+        <Button btnType="Success" clicked={this.orderHandler} disabled={!this.state.formIsValid}>
           ORDER
         </Button>
       </form>
@@ -198,7 +189,4 @@ const mapDispatchToProps = (dispatch) => {
     onOrderBurger: (orderData) => dispatch(actions.purchaseBurger(orderData)),
   };
 };
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(withErrorHandler(ContactData, axios));
+export default connect(mapStateToProps, mapDispatchToProps)(withErrorHandler(ContactData, axios));

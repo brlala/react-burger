@@ -1,15 +1,6 @@
 import classes from './Input.module.css';
 
-const input = ({
-  elementType,
-  elementConfig,
-  value,
-  label,
-  changed,
-  invalid,
-  shouldValidate,
-  touched,
-}) => {
+const input = ({ elementType, elementConfig, value, label, changed, invalid, shouldValidate, touched }) => {
   let inputElement;
   const inputClasses = [classes.InputElement];
   if (invalid && shouldValidate && touched) {

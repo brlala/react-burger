@@ -53,11 +53,7 @@ class BurgerBuilder extends Component {
     }
 
     let orderSummary = null;
-    let burger = this.props.error ? (
-      <p>Ingredients can't be loaded!</p>
-    ) : (
-      <Spinner />
-    );
+    let burger = this.props.error ? <p>Ingredients can't be loaded!</p> : <Spinner />;
     if (this.state.loading) {
       orderSummary = <Spinner />;
     }
@@ -92,10 +88,7 @@ class BurgerBuilder extends Component {
 
     return (
       <>
-        <Modal
-          show={this.state.purchasing}
-          modalClosed={this.purchaseCancelHandler}
-        >
+        <Modal show={this.state.purchasing} modalClosed={this.purchaseCancelHandler}>
           {orderSummary}
         </Modal>
         {burger}
@@ -114,13 +107,9 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     onIngredientAdded: (ingName) => dispatch(actions.addIngredient(ingName)),
-    onIngredientRemoved: (ingName) =>
-      dispatch(actions.removeIngredient(ingName)),
+    onIngredientRemoved: (ingName) => dispatch(actions.removeIngredient(ingName)),
     onInitIngredients: () => dispatch(actions.initIngredient()),
     onInitPurchase: () => dispatch(actions.purchaseInit()),
   };
 };
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(withErrorHandler(BurgerBuilder, axios));
+export default connect(mapStateToProps, mapDispatchToProps)(withErrorHandler(BurgerBuilder, axios));

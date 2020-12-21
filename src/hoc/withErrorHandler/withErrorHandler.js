@@ -35,10 +35,7 @@ const withErrorHandler = (WrappedComponent, axios) => {
     render() {
       return (
         <>
-          <Modal
-            show={this.state.error}
-            modalClosed={this.errorConfirmedHandler}
-          >
+          <Modal show={this.state.error} modalClosed={this.errorConfirmedHandler}>
             {this.state.error?.message}
           </Modal>
           {/* eslint-disable-next-line react/jsx-props-no-spreading */}
