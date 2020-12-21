@@ -3,7 +3,7 @@ import NavigationItems from '../NavigationItems/NavigationItems';
 import classes from './SideDrawer.module.css';
 import Backdrop from '../../UI/Backdrop/Backdrop';
 
-const sideDrawer = ({ open, closed }) => {
+const sideDrawer = ({ open, closed, isAuth }) => {
   let attachedClasses = [classes.SideDrawer, classes.Close];
   if (open) {
     attachedClasses = [classes.SideDrawer, classes.Open];
@@ -16,7 +16,7 @@ const sideDrawer = ({ open, closed }) => {
           <Logo />
         </div>
         <nav>
-          <NavigationItems />
+          <NavigationItems isAuthenticated={isAuth} />
         </nav>
       </div>
     </>
