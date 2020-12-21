@@ -6,10 +6,13 @@ import { createStore } from 'redux';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import reducer from './store/reducer';
+import burgerBuilderReducer from './store/reducers/burgerBuilder';
 
-const store = createStore(reducer);
-console.log(store.getState());
+const store = createStore(
+  burgerBuilderReducer,
+  // eslint-disable-next-line no-underscore-dangle
+  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+);
 const app = (
   <React.StrictMode>
     <Provider store={store}>
