@@ -122,22 +122,28 @@ class Auth extends Component {
     return (
       <div className={classes.Auth}>
         {/*{authRedirect}*/}
-        {/*{errorMessage}*/}
+        {errorMessage}
         <form onSubmit={this.submitHandler}>
           {form}
           <Button btnType="Success">SUBMIT</Button>
         </form>
-        {/*<Button*/}
-        {/*  clicked={this.switchAuthModeHandler}*/}
-        {/*  btnType="Danger">SWITCH TO {this.state.isSignup ? 'SIGNIN' : 'SIGNUP'}</Button>*/}
+        <Button clicked={this.switchAuthModeHandler} btnType="Danger">
+          SWITCH TO {this.state.isSignup ? 'SIGNIN' : 'SIGNUP'}
+        </Button>
       </div>
     );
   }
 }
 
-const mapDispatchToProps = (dispatch) => {
+const mapStateToProps = (state) => {
   return {
-    onAuth: (email, password) => dispatch(actions.auth(email, password)),
+    loading: state.auth.loading,
+    error: state.auth.error,
   };
 };
-export default connect(null, mapDispatchToProps)(Auth);
+const mapDispatchToProps = (dispatch) => {
+  return {
+    onAuth: (email, password, isSignup) => dispatch(actions.auth(email, password, isSignup)),
+  };
+};
+export default connect(mapStateToProps, mapDispatchToProps)(Auth);
