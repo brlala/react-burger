@@ -50,6 +50,7 @@ rules:
   spaced-comment: off # depends on use case
   jsx-a11y/label-has-associated-control: off # depends on use case
   class-methods-use-this: off
+  import/no-named-as-default: off
   quotes:
     - warn
     - single
