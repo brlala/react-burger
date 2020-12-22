@@ -7,3 +7,8 @@
 6. Preference of `async`/`await` over `.then` and `.catch`
 7. Root Path should fall in a PATH constants file 
 8. Store Persistent state and Client State(authenticated state etc.) in redux., Local UI state to pass down through component props. Do not abuse redux, if we're handling user input, `onChangeHandler` should use local state.
+
+#Things to do
+- guard the route(if user access through URL instead of normal button clicks)
+- refresh token on each HTTP request, using refresh token
+- load the token from localstorage if available
