@@ -1,3 +1,13 @@
+# Introduction
+This is a demo project to familiarize the concept of using react, the project includes
+- setting up of eslint, prettier
+- connecting to a backend(Firebase)
+- authentication(token)
+- Redux for state management, redux-thunk(async actions)
+- Hooks for react v16.8 and above
+- lazyloading components
+
+#Code style
 1. Setting up ESlint, prettier, gitignore
 2. do not eject from CRA
 3. always use destructuring
