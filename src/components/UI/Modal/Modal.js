@@ -9,7 +9,7 @@ class Modal extends Component {
 
   // eslint-disable-next-line camelcase
   UNSAFE_componentWillUpdate() {
-    console.log('[Modal] WillUpdate');
+    // console.log('[Modal] WillUpdate');
   }
 
   render() {

@@ -51,6 +51,7 @@ rules:
   jsx-a11y/label-has-associated-control: off # depends on use case
   class-methods-use-this: warn # can consider refactoring it into a shared utility method
   import/no-named-as-default: off
+  import/prefer-default-export: off
   quotes:
     - warn
     - single

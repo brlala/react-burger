@@ -5,7 +5,7 @@ class OrderSummary extends Component {
   // This could be a functional component, doesn't have to be a class
   // eslint-disable-next-line camelcase
   UNSAFE_componentWillUpdate() {
-    console.log('[OrderSummary] WillUpdate');
+    // console.log('[OrderSummary] WillUpdate');
   }
 
   render() {
