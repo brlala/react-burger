@@ -29,7 +29,7 @@ const burgerBuilder = ({
 
   useEffect(() => {
     onInitIngredients();
-  }, []);
+  }, [onInitIngredients]);
 
   const purchaseHandler = () => {
     if (isAuthenticated) {
