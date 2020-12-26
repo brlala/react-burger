@@ -1,33 +1,25 @@
-import { Component } from 'react';
+import React from 'react';
 import Backdrop from '../Backdrop/Backdrop';
 import classes from './Modal.module.css';
 
-class Modal extends Component {
-  shouldComponentUpdate(nextProps, nextState) {
-    return nextProps.show !== this.props.show || nextProps.children !== this.props.children;
-  }
+const Modal = ({ show, children, modalClosed }) => {
+  return (
+    <>
+      <Backdrop show={show} clicked={modalClosed} />
+      <div
+        className={classes.Modal}
+        style={{
+          transform: show ? 'translateY(0)' : 'translateY(-100vh)',
+          opacity: show ? '1' : '0',
+        }}
+      >
+        {children}
+      </div>
+    </>
+  );
+};
 
-  // eslint-disable-next-line camelcase
-  UNSAFE_componentWillUpdate() {
-    // console.log('[Modal] WillUpdate');
-  }
-
-  render() {
-    return (
-      <>
-        <Backdrop show={this.props.show} clicked={this.props.modalClosed} />
-        <div
-          className={classes.Modal}
-          style={{
-            transform: this.props.show ? 'translateY(0)' : 'translateY(-100vh)',
-            opacity: this.props.show ? '1' : '0',
-          }}
-        >
-          {this.props.children}
-        </div>
-      </>
-    );
-  }
-}
-
-export default Modal;
+export default React.memo(
+  Modal,
+  (prevProps, nextProps) => nextProps.show === prevProps.show && nextProps.children === prevProps.children
+);

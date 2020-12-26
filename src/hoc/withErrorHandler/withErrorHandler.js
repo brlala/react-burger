@@ -1,48 +1,41 @@
-import { Component } from 'react';
+import { useState, useEffect } from 'react';
 import Modal from '../../components/UI/Modal/Modal';
 
 const withErrorHandler = (WrappedComponent, axios) => {
-  return class extends Component {
-    state = {
-      error: null,
+  return (props) => {
+    const [error, setError] = useState(null);
+
+    const reqInterceptor = axios.interceptors.request.use((req) => {
+      setError(null);
+      return req;
+    });
+
+    const resInterceptor = axios.interceptors.response.use(
+      (res) => res,
+      (err) => setError(err)
+    );
+
+    useEffect(() => {
+      return () => {
+        // prevent memory leak when lots of instance is created
+        axios.interceptors.request.eject(reqInterceptor);
+        axios.interceptors.request.eject(resInterceptor);
+      };
+    }, []);
+
+    const errorConfirmedHandler = () => {
+      setError(null);
     };
 
-    // global error handlers
-    // eslint-disable-next-line camelcase
-    UNSAFE_componentWillMount() {
-      this.reqInterceptor = axios.interceptors.request.use((req) => {
-        this.setState({ error: null });
-        return req;
-      });
-      this.resInterceptor = axios.interceptors.response.use(
-        (res) => res,
-        (error) => {
-          this.setState({ error });
-        }
-      );
-    }
-
-    componentWillUnmount() {
-      // prevent memory leak when lots of instance is created
-      axios.interceptors.request.eject(this.reqInterceptor);
-      axios.interceptors.request.eject(this.resInterceptor);
-    }
-
-    errorConfirmedHandler = () => {
-      this.setState({ error: null });
-    };
-
-    render() {
-      return (
-        <>
-          <Modal show={this.state.error} modalClosed={this.errorConfirmedHandler}>
-            {this.state.error?.message}
-          </Modal>
-          {/* eslint-disable-next-line react/jsx-props-no-spreading */}
-          <WrappedComponent {...this.props} />
-        </>
-      );
-    }
+    return (
+      <>
+        <Modal show={error} modalClosed={errorConfirmedHandler}>
+          {error?.message}
+        </Modal>
+        {/* eslint-disable-next-line react/jsx-props-no-spreading */}
+        <WrappedComponent {...props} />
+      </>
+    );
   };
 };
 
